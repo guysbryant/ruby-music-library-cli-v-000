@@ -47,7 +47,6 @@ class MusicLibraryController
     Genre.all.sort{|a, b| a.name <=> b.name}.each.with_index{|genre, index| puts "#{index + 1}. #{genre.name}"}
   end
   def list_songs_by_artist
-<<<<<<< HEAD
     puts "Please enter the name of an artist:"
     artist = gets.strip
     Song.all.detect{|song| Artist.find_by_name(artist).songs.sort{|a, b| a.name <=> b.name}.each.with_index{|song, index| puts "#{index + 1}. #{song.name} - #{song.genre.name}"}  if song.artist.name == artist}
@@ -55,23 +54,13 @@ class MusicLibraryController
   def list_songs_by_genre
     puts "Please enter the name of a genre:"
     genre = gets.strip
-    Genre.find_by_name(genre).songs.sort{|a, b| a.name <=> b.name}.each.with_index{|song, index| puts "#{index + 1}. #{song.artist.name} - #{song.name}"} if song.genre.name == genre
+    Song.all.detect{|song| Genre.find_by_name(genre).songs.sort{|a, b| a.name <=> b.name}.each.with_index{|song, index| puts "#{index + 1}. #{song.artist.name} - #{song.name}"} if song.genre.name == genre}
   end
   def play_song
     puts "Which song number would you like to play?"
     song_choice = gets.strip.to_i-1
     song = Song.all.sort{|a, b| a.name <=> b.name}[song_choice] if song_choice > 0 && song_choice < Song.all.length
     puts "Playing #{song.name} by #{song.artist.name}" if song != nil
+  end
 
-    puts "Enter artist"
-    artist = gets.strip
-    Song.all.detect{|song| song.artist.name == artist.name}.sort{|a, b| a.name <=> b.name}.each.with_index{|song, index| puts "#{index + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"}
-  end
-  def list_songs_by_genre
-    
-  end
-  def play_song
-    
->>>>>>> c365e81eb7fc500a4a5f4efe1fcdb58b9917919e
-  end
 end
