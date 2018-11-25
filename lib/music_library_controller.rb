@@ -62,7 +62,7 @@ class MusicLibraryController
     song_choice = gets.strip.to_i-1
     song = Song.all.sort{|a, b| a.name <=> b.name}[song_choice] if song_choice > 0 && song_choice < Song.all.length
     puts "Playing #{song.name} by #{song.artist.name}" if song != nil
-=======
+
     puts "Enter artist"
     artist = gets.strip
     Song.all.detect{|song| song.artist.name == artist.name}.sort{|a, b| a.name <=> b.name}.each.with_index{|song, index| puts "#{index + 1}. #{song.artist.name} - #{song.name} - #{song.genre.name}"}
